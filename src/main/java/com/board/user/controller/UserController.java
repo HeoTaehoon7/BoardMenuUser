@@ -38,12 +38,14 @@ public class UserController {
 	public  ModelAndView   writeForm() {
 		
 		ModelAndView    mv    = new ModelAndView();
+		
 		LocalDateTime   today = LocalDateTime.now();
 		String          now   = today.format(
 				DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss:SSSS")); 
 		DayOfWeek       wkday = today.getDayOfWeek();	
 		now                  += " " + wkday; 
 		mv.addObject("now", now);
+		
 		mv.setViewName("users/write");
 		return  mv;
 		
@@ -51,8 +53,7 @@ public class UserController {
 	
 	//  /Users/Write
 	@RequestMapping("/Write")
-	public  ModelAndView  write( UserVo  userVo ) {
-		System.out.println();
+	public  ModelAndView  write( UserVo  userVo ) {		
 		// 저장
 		userMapper.insertUser( userVo );		
 		

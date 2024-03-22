@@ -6,7 +6,7 @@
 	 <result property="userid" column="userid"  />
 	 <result property="username" column="username" />
 	 <result property="email" column="email" />
-	 <result property="upoint" column="upoint" />
+	 <result property="upoint" column="upt" />
 	 <result property="indate" column="indate" />	
 	</resultMap>
 	
@@ -22,7 +22,7 @@
 	                 WHEN UPOINT BETWEEN 4001 AND  6000  THEN  '일반회원'
 	                 WHEN UPOINT BETWEEN 2001 AND  4000  THEN  '준회원'
 	                 WHEN UPOINT BETWEEN 0    AND  2000  THEN  '손님'
-	               END   UPOINT,	               
+	               END   UPT,	               
 	               -- upoint,
 	               TO_CHAR( INDATE, 'YYYY-MM-DD')  INDATE
 	     FROM      TUSER
@@ -36,13 +36,17 @@
 	         USERID,
 	         PASSWD,
 	         USERNAME,
-	         EMAIL
+	         EMAIL,
+	         UPOINT,
+	         INDATE
 	    )
 	    VALUES (
 	         #{ userid    },
 	         #{ passwd    },
 	         #{ username  },
-	         #{ email     }
+	         #{ email     },
+	         1000,
+	         SYSDATE
 	    )	
 		
 	</insert>
