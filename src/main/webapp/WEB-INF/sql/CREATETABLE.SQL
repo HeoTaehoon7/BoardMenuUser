@@ -18,6 +18,23 @@ CREATE   TABLE   TUSER (
    , INDATE      DATE          DEFAULT SYSDATE
 );
 
+INSERT INTO tuser (
+    userid,
+    passwd,
+    username,
+    email,
+    upoint,
+    indate
+) VALUES (
+    'sky',
+    '1234',
+    '관리자',
+    'admin@green.com',
+    1000,
+    sysdate
+);
+
+commit;
 
 
 

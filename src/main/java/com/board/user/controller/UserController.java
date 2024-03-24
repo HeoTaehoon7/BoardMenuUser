@@ -3,6 +3,7 @@ package com.board.user.controller;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,58 @@ public class UserController {
 	public  ModelAndView  write( UserVo  userVo ) {		
 		// 저장
 		userMapper.insertUser( userVo );		
+		
+		// 데이터를 가지고 이동한다
+		ModelAndView   mv   =  new  ModelAndView();
+		mv.setViewName("redirect:/Users/List");
+		return   mv;
+	}
+	
+	//  /Users/View
+	@RequestMapping("/View")
+	public  ModelAndView  view( UserVo  userVo ) {		
+		// 조회
+		HashMap<String, Object> map = userMapper.getUser( userVo );		
+		
+		// 데이터를 가지고 이동한다
+		ModelAndView   mv   =  new  ModelAndView();
+		mv.addObject("user", map);
+		mv.setViewName("users/view");
+		return   mv;
+	}
+	
+	//  /Users/UpdateForm
+	@RequestMapping("/UpdateForm")
+	public  ModelAndView   updateForm(UserVo userVo) {
+		
+		// 조회
+		HashMap<String, Object> map = userMapper.getUser( userVo );		
+		
+		// 데이터를 가지고 이동한다
+		ModelAndView   mv   =  new  ModelAndView();
+		mv.addObject("user", map);
+		mv.setViewName("users/update");
+		return   mv;
+		
+	}
+	
+	//  /Users/Write
+	@RequestMapping("/Update")
+	public  ModelAndView  update( UserVo  userVo ) {		
+		// 저장
+		userMapper.updateUser( userVo );		
+		
+		// 데이터를 가지고 이동한다
+		ModelAndView   mv   =  new  ModelAndView();
+		mv.setViewName("redirect:/Users/List");
+		return   mv;
+	}
+	
+	//  /Users/Delete
+	@RequestMapping("/Delete")
+	public  ModelAndView  delete( UserVo  userVo ) {		
+		// 저장
+		userMapper.deleteUser( userVo );		
 		
 		// 데이터를 가지고 이동한다
 		ModelAndView   mv   =  new  ModelAndView();

@@ -11,10 +11,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.board.menus.domain.MenuVo;
 import com.board.menus.mapper.MenuMapper;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 @Controller
 @RequestMapping("/Menus")
 public class MenuController {
-	
+		
 	@Autowired
 	private  MenuMapper  menuMapper;
 	
@@ -23,10 +26,11 @@ public class MenuController {
 	public   String   list( Model model ) {
 		// 조회한결과를 ArrayList 로 돌려준디
 		List<MenuVo> menuList = menuMapper.getMenuList();
-				
+	
+		
 		// 조회 결과를 넘겨준다 ( Model )
 		model.addAttribute( "menuList", menuList );
-		//System.out.println( "MenuController list() menuList:" + menuList );
+		System.out.println( "MenuController list() menuList:" + menuList );
 		
 		return "menus/list";
 	}
