@@ -36,7 +36,20 @@ INSERT INTO tuser (
 
 commit;
 
-
+----------------------------------------------
+--  board 게시판
+----------------------------------------------
+CREATE   TABLE   BOARD
+(
+      IDX            NUMBER(5, 0)        PRIMARY KEY
+    , MENU_ID        VARCHAR2( 6 )       NOT NULL
+        REFERENCES   MENUS ( MENU_ID  )
+    , TITLE          VARCHAR2( 300  )    NOT NULL
+    , CONT           VARCHAR2( 4000 )  
+    , WRITER         VARCHAR2( 30 )
+    , REGDATE        DATE                DEFAULT  SYSDATE 
+    , READCOUNT      NUMBER( 6, 0 )      DEFAULT  0   
+)
 
 
 

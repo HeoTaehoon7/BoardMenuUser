@@ -17,9 +17,13 @@
 	<div><a href="/Menus/WriteForm">새 메뉴 추가</a></div>
 	<div><a href="/Menus/WriteForm2">새 메뉴 추가2</a></div>
 	<div><a href="/Menus/List">메뉴 목록</a></div>	
-	<hr />
+	<div><hr /></div>
 	<div><a href="/Users/List">사용자 목록</a></div>
 	<div><a href="/Users/WriteForm">사용자 추가</a></div>
+	<div><hr /></div>
+	<div><a href="/Board/List?menu_id=MENU01">게시물 목록</a></div>
+	<div><a href="/Board/WriteForm/MENU01">게시글 등록</a></div>
+	
   </main>	
 </body>
 </html>
